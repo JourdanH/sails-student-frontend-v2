@@ -1,14 +1,14 @@
 /**
- * StudentController
+ *  Grade Controller
  *
- * @description :: Server-side logic for managing students
+ * @description :: Server-side logic for managing grades
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
 var Client = require('node-rest-client').Client;
 var client = new Client();
-var endpoint = "http://localhost:1337/student";
-var view = "manage_students";
+var endpoint = "http://localhost:1337/grade";
+var view = "manage_grades";
 
 function clean_request_body(request_body) {
   return JSON.parse(JSON.stringify(request_body).replace(/\"\"/g, null))
@@ -17,7 +17,7 @@ function clean_request_body(request_body) {
 module.exports = {
 
   /**
-   * `StudentController.create()`
+   * `GradeController.create()`
    */
   create: function(req, res) {
 
@@ -44,18 +44,18 @@ module.exports = {
 
 
   /**
-   * `StudentController.read()`
+   * `GradeController.read()`
    */
   read: function(req, res) {
 
     client.get(endpoint, function(data, response) {
       return res.view(view, {
-        students: data
+        grades: data
       });
     }).on('error', function(err) {
       return res.view(view, {
         error: {
-          message: "There was an error getting the students"
+          message: "There was an error getting the grades"
         }
       });
     });
@@ -64,12 +64,12 @@ module.exports = {
 
 
   /**
-   * `StudentController.update()`
+   * `GradeController.update()`
    */
   update: function(req, res) {
 
-    let studentId = req.body.student_id;
-    delete req.body.student_id;
+    let gradeId = req.body.grade_id;
+    delete req.body.grade_id;
 
     var args = {
       data: clean_request_body(req.body),
@@ -78,7 +78,7 @@ module.exports = {
       }
     };
 
-    client.put(endpoint + "/" + studentId, args, function(data, response) {
+    client.put(endpoint + "/" + gradeId, args, function(data, response) {
 
       if (response.statusCode != "200") {
         req.addFlash("error", data.message);
@@ -92,11 +92,11 @@ module.exports = {
   },
 
   /**
-   * `StudentController.delete()`
+   * `GradeController.delete()`
    */
   delete: function(req, res) {
 
-    client.delete(endpoint + "/" + req.body.student_id, function(data, response) {
+    client.delete(endpoint + "/" + req.body.grade_id, function(data, response) {
 
       if (response.statusCode != "200") {
         req.addFlash("error", data.message);

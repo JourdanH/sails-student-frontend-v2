@@ -23,32 +23,59 @@
 module.exports.routes = {
 
   /***************************************************************************
-  *                                                                          *
-  * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
-  * etc. depending on your default view engine) your home page.              *
-  *                                                                          *
-  * (Alternatively, remove this and add an `index.html` file in your         *
-  * `assets` directory)                                                      *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, *
+   * etc. depending on your default view engine) your home page.              *
+   *                                                                          *
+   * (Alternatively, remove this and add an `index.html` file in your         *
+   * `assets` directory)                                                      *
+   *                                                                          *
+   ***************************************************************************/
 
   '/': {
     view: 'homepage'
   },
 
   /***************************************************************************
-  *                                                                          *
-  * Custom routes here...                                                    *
-  *                                                                          *
-  * If a request to a URL doesn't match any of the custom routes above, it   *
-  * is matched against Sails route blueprints. See `config/blueprints.js`    *
-  * for configuration options and examples.                                  *
-  *                                                                          *
-  ***************************************************************************/
+   *                                                                          *
+   * Custom routes here...                                                    *
+   *                                                                          *
+   * If a request to a URL doesn't match any of the custom routes above, it   *
+   * is matched against Sails route blueprints. See `config/blueprints.js`    *
+   * for configuration options and examples.                                  *
+   *                                                                          *
+   ***************************************************************************/
 
   'POST /create_student': 'StudentController.create',
   'GET /manage_students': 'StudentController.read',
   'POST /update_student': 'StudentController.update',
-  'POST /delete_student': 'StudentController.delete'
-
+  'POST /delete_student': 'StudentController.delete',
+  'POST /create_grade': 'GradeController.create',
+  'GET /manage_grades': 'GradeController.read',
+  'POST /update_grade': 'GradeController.update',
+  'POST /delete_grade': 'GradeController.delete',
+  'POST /create_assignment': 'AssignmentController.create',
+  'GET /manage_assignments': 'AssignmentController.read',
+  'POST /update_assignment': 'AssignmentController.update',
+  'POST /delete_assignment': 'AssignmentController.delete',
+  'POST /create_class': 'ClassController.create',
+  'GET /manage_classes': 'ClassController.read',
+  'POST /update_class': 'ClassController.update',
+  'POST /delete_class': 'ClassController.delete',
+  'POST /create_major': 'MajorController.create',
+  'GET /manage_majors': 'MajorController.read',
+  'POST /update_major': 'MajorController.update',
+  'POST /delete_major': 'MajorController.delete',
+  'POST /create_instructor': 'InstructorController.create',
+  'GET /manage_instructors': 'InstructorController.read',
+  'POST /update_instructor': 'InstructorController.update',
+  'POST /delete_instructor': 'InstructorController.delete',
+  'POST /create_studentClass': 'StudentClassController.create',
+  'GET /manage_studentClasses': 'StudentClassController.read',
+  'POST /update_studentClass': 'StudentClassController.update',
+  'POST /delete_studentClass': 'StudentClassController.delete',
+  'POST /create_majorClass': 'MajorClassController.create',
+  'GET /manage_majorClasses': 'MajorClassController.read',
+  'POST /update_majorClass': 'MajorClassController.update',
+  'POST /delete_majorClass': 'MajorClassController.delete'
 };
